@@ -3,7 +3,22 @@ class RegistrationsController < Devise::RegistrationsController
   # https://github.com/heartcombo/devise/blob/main/app/controllers/devise/registrations_controller.rb
   def new
     build_resource(sign_up_params)
-    
+
+    @payment = Payment.new({ 
+      email: "test24@example.com",
+      user_id: 24 })
+    begin
+      @payment.process_payment
+      @payment.save
+    rescue Exception => e
+      flash[:error] = e.message
+      resource.destroy
+      puts 'Payment failed'
+      render :new and return
+    end
+
+
+
     resource.class.transaction do
       resource.save
       yield resource if block_given?
