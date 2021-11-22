@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :images
   # https://stackoverflow.com/questions/6567863/no-route-matches-get-users-sign-out  
   devise_for :users, :controllers => { :registrations => "registrations" }
   devise_scope :user do  
