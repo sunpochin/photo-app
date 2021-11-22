@@ -1,5 +1,6 @@
 * Issues of not seeing payment in stripe dashboard:
   * https://www.udemy.com/course/the-complete-ruby-on-rails-developer-course/learn/lecture/3853696#questions/11847720
+  * https://www.udemy.com/course/the-complete-ruby-on-rails-developer-course/learn/lecture/3853696#questions/10981814
   * https://stripe.com/docs/saving-cards
 
   * My code using a test visa card code: 4242424242424242
