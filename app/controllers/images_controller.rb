@@ -13,6 +13,8 @@ class ImagesController < ApplicationController
   # GET /images/new
   def new
     @image = Image.new
+    # https://www.udemy.com/course/the-complete-ruby-on-rails-developer-course/learn/lecture/3853750#questions/3224868
+    @image.user_id = current_user.id
   end
 
   # GET /images/1/edit
@@ -22,6 +24,7 @@ class ImagesController < ApplicationController
   # POST /images or /images.json
   def create
     @image = Image.new(image_params)
+    @image.user_id = current_user.id
 
     respond_to do |format|
       if @image.save
@@ -64,6 +67,9 @@ class ImagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def image_params
-      params.require(:image).permit(:name, :picture, :user_id)
+      # params.require(:image).permit(:name, :picture, :user_id)
+      # https://www.udemy.com/course/the-complete-ruby-on-rails-developer-course/learn/lecture/3853750#questions/3224868      
+      params.require(:image).permit(:name, :picture).merge(user: current_user)
+
     end
 end

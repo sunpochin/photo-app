@@ -6,7 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
 
     @payment = Payment.new({ 
       email: "test24@example.com",
-      user_id: 24 })
+      user_id: 1 })
     begin
       @payment.process_payment
       @payment.save
